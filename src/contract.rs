@@ -14,7 +14,7 @@ pub fn instantiate(
 ) -> StdResult<Response> {
     let state = State {
         count: msg.count,
-        owner: deps.api.addr_canonicalize(info.sender.as_str())?,
+        owner: info.sender.clone(),
     };
 
     deps.api
@@ -43,9 +43,9 @@ pub fn try_increment(deps: DepsMut, _env: Env) -> StdResult<Response> {
 }
 
 pub fn try_reset(deps: DepsMut, info: MessageInfo, count: i32) -> StdResult<Response> {
-    let sender_address_raw = deps.api.addr_canonicalize(info.sender.as_str())?;
+    let sender_address = info.sender.clone();
     config(deps.storage).update(|mut state| {
-        if sender_address_raw != state.owner {
+        if sender_address != state.owner {
             return Err(StdError::generic_err("Only the owner can reset count"));
         }
         state.count = count;
