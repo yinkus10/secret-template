@@ -3,8 +3,8 @@
 This is a template to build secret contracts in Rust to run in
 [Secret Network](https://github.com/enigmampc/SecretNetwork).
 To understand the framework better, please read the overview in the
-[cosmwasm repo](https://github.com/CosmWasm/cosmwasm/blob/master/README.md),
-and dig into the [cosmwasm docs](https://www.cosmwasm.com).
+[CosmWasm repo](https://github.com/CosmWasm/cosmwasm/blob/master/README.md),
+and dig into the [CosmWasm docs](https://book.cosmwasm.com/).
 This assumes you understand the theory and just want to get coding.
 
 ## Creating a new repo from template
@@ -52,7 +52,7 @@ git push -u origin master
 
 Once you have your custom repo, you should check out [Developing](./Developing.md) to explain
 more on how to run tests and develop code. Or go through the
-[online tutorial](https://www.cosmwasm.com/docs/getting-started/intro) to get a better feel
+[Getting Started docs](https://docs.scrt.network/secret-network-documentation/development/getting-started) to get a better feel
 of how to develop.
 
 [Publishing](./Publishing.md) contains useful information on how to publish your contract
@@ -66,3 +66,13 @@ if you have `make` installed (very recommended. at least check them out).
 Please replace this README file with information about your specific project. You can keep
 the `Developing.md` and `Publishing.md` files as useful referenced, but please set some
 proper description in the README.
+
+## Importing Additional Dependencies
+
+If you would like to import additional dependencies, such as [Secret Toolkit](https://github.com/scrtlabs/secret-toolkit) or cw-storage-plus, you can do so by adding the following to your cargo.toml file:
+
+```sh
+[dependencies]
+secret-toolkit = { git = "https://github.com/scrtlabs/secret-toolkit", tag = "v0.8.0"}
+cw-storage-plus = {version = "1.0.1", default-features = false}
+```
